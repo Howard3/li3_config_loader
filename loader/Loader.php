@@ -26,8 +26,9 @@ class Loader {
 		static::$_config = $config;
 	}
 
-	public static function load($class, $require = false) {;
+	public static function load($class, $require = false) {
 		$config = &static::$_config;
+		Libraries::load($class, $require);
 		if (isset($config['classes'][$class])) {
 			$path = $config['classes'][$class] ?: Inflector::underscore($class) . '.php';
 			$path = preg_match('/^\w:|^\//', $path) ? $path : $config['filepath'] . '/' . $path;
@@ -35,6 +36,5 @@ class Loader {
 				throw new ConfigException("Could not load config file at `{$path}` for `{$class}`");
 			}
 		}
-		Libraries::load($class, $require);
 	}
 }

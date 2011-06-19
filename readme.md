@@ -11,27 +11,53 @@ To use the Lithium Config Loader follow these steps
 1. Check out this project to your application's `libraries` directory.
 2. In `app\config\bootstrap\libraries.php` add the library and configure as appropriate (more
 below about configuring.) *before* the call to add the lithium library.
-	Libraries::add('li3_config_loader', array(
-		'classes' => array(
-			'some\class\with\a\Config'
-		)
-	));
+    Libraries::add('li3_config_loader', array(
+        'classes' => array(
+            'some\class\with\a\Config'
+        )
+    ));
 3. Modify your library loading for lithium so that it has the same key as the second parameter as
  shown below.
-	Libraries::add('lithium', array(
-		'loader' => 'li3_config_loader\loader\Loader::load'
-	));
+    Libraries::add('lithium', array(
+        'loader' => 'li3_config_loader\loader\Loader::load'
+    ));
 
 That's it. You'll want to configure the config loader appropriately so see more about that below.
 
-# Configuring the config loader
+# Configuring the Config Loader
 
 The config loader accepts two primary keys, `filepath` and `classes`. `filepath` is the default
 directory that the configuration files will exist, by default this is set to your application's
 *config* directory.
 
 `classes` is an array of classes which have configuration files unique to them. By default when a
- class exists here their namespace & class name are used for the filename and assumed as residing
-  in the `filepath`'s directory. You can alternatively set a class to have a directory by setting
-   it's namespace as the array key and defining (a relative to the `filepath` or absolute
-   directory.)
+ class exists here their namespace & class name are used for the filename, it is represented as an
+ underlined version, and assumed as residing in the `filepath`'s directory. You can alternatively
+  set a class to have a directory by setting it's namespace as the array key and defining (a
+  relative to the `filepath` or absolute directory.)
+
+# Usage Examples
+
+Say we want to add a config file for the `lithium\security\Auth`, however we don't use the class
+for every page, so it'd be a waste to load this file on every page load.
+
+1. Add the class to the `classes` key in the library config.
+    Libraries::add('li3_config_loader', array(
+        'classes' => array(
+            'lithium\security\Auth'
+        )
+    ));
+2. Create the relevant file (in this example `app\config\lithium_security_auth`).
+3. Add your config to this file
+    Auth::config(array(
+        'user' => array(
+            'adapter' => 'Form',
+            'model' => 'Users',
+            'fields' => array('username', 'password')
+        )
+    ));
+    //whatever else you want to do with auth as well.
+
+Because of this setup the Auth class is never loaded into memory. 
+
+
