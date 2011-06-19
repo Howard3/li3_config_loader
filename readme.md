@@ -8,8 +8,9 @@ and only apply them when it's relevant.
 
 To use the Lithium Config Loader follow these steps
 
-_1. Check out this project to your application's `libraries` directory.
-_2. In `app\config\bootstrap\libraries.php` add the library and configure as appropriate (more
+ 1. Check out this project to your application's `libraries` directory.
+
+ 2. In `app\config\bootstrap\libraries.php` add the library and configure as appropriate (more
 below about configuring.) *before* the call to add the lithium library.
 
 	Libraries::add('li3_config_loader', array(
