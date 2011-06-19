@@ -1,6 +1,6 @@
 <?php
 
-namespace config_loader\loader;
+namespace li3_config_loader\loader;
 
 use lithium\core\Libraries;
 use lithium\util\Inflector;
