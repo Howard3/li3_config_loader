@@ -46,11 +46,11 @@ for every page, so it'd be a waste to load this file on every page load.
 
 1. Add the class to the `classes` key in the library config.
 
-	Libraries::add('li3_config_loader', array(
-		'classes' => array(
-			'lithium\security\Auth'
-		)
-	));
+    Libraries::add('li3_config_loader', array(
+        'classes' => array(
+            'lithium\security\Auth'
+        )
+    ));
 
 2. Create the relevant file (in this example `app\config\lithium_security_auth`).
 3. Add your config to this file
