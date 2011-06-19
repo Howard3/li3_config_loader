@@ -54,6 +54,7 @@ _1. Add the class to the `classes` key in the library config.
 	));
 
 _2. Create the relevant file (in this example `app\config\lithium_security_auth.php`).
+
 _3. Add your config to this file
 
 	Auth::config(array(
