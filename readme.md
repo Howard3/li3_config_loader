@@ -8,9 +8,9 @@ and only apply them when it's relevant.
 
 To use the Lithium Config Loader follow these steps
 
- 1. Check out this project to your application's `libraries` directory.
+_1. Check out this project to your application's `libraries` directory.
 
- 2. In `app\config\bootstrap\libraries.php` add the library and configure as appropriate (more
+_2. In `app\config\bootstrap\libraries.php` add the library and configure as appropriate (more
 below about configuring.) *before* the call to add the lithium library.
 
 	Libraries::add('li3_config_loader', array(
@@ -19,7 +19,7 @@ below about configuring.) *before* the call to add the lithium library.
 		)
 	));
 
-Modify your library loading for lithium so that it has the same key as the second parameter as
+_3. Modify your library loading for lithium so that it has the same key as the second parameter as
  shown below.
 
 	Libraries::add('lithium', array(
@@ -40,12 +40,12 @@ directory that the configuration files will exist, by default this is set to you
   set a class to have a directory by setting it's namespace as the array key and defining (a
   relative to the `filepath` or absolute directory.)
 
-# Usage Examples
+# Usage Example
 
 Say we want to add a config file for the `lithium\security\Auth`, however we don't use the class
 for every page, so it'd be a waste to load this file on every page load.
 
-Add the class to the `classes` key in the library config.
+_1. Add the class to the `classes` key in the library config.
 
 	Libraries::add('li3_config_loader', array(
 		'classes' => array(
@@ -53,8 +53,8 @@ Add the class to the `classes` key in the library config.
 		)
 	));
 
-Create the relevant file (in this example `app\config\lithium_security_auth`).
-Add your config to this file
+_2. Create the relevant file (in this example `app\config\lithium_security_auth.php`).
+_3. Add your config to this file
 
 	Auth::config(array(
 		'user' => array(
